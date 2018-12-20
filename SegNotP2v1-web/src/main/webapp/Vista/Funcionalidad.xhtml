@@ -39,7 +39,7 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <h:form>
+                    <h:form id="formfun">
                         <p:outputLabel value="Codigo de Funcionalidad: "/>
                         <p:inputText value="#{funcionalidadController.codigoFuncionalidad}" />
                         <br/>
@@ -49,9 +49,32 @@
                         <p:outputLabel value="Recurso de la funcionalidad"/>
                         <p:inputText value="#{funcionalidadController.recurso}"/>
                         <br/>
-                        <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{funcionalidadController.insertarFuncionalidad()}" />
-                        
+                        <p:outputLabel value="Estado: "/>
+                        <p:outputLabel value="#{funcionalidadController.msg}"/>
+                        <br/>
+                        <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{funcionalidadController.insertarFuncionalidad()}" update="formfun" />
+
+                        <p:dataTable var="fun" value="#{funcionalidadController.listFuncionTodo}" sortMode="multiple">
+                            <f:facet name="header">
+                                Funcionalidades
+                            </f:facet>
+                            <p:column headerText="codigoFuncionalidad"  sortBy="#{fun.codigoFuncionalidad}">
+                                <h:outputText value="#{fun.codigoFuncionalidad}" />
+                            </p:column>
+
+                            <p:column headerText="nombreFuncionalidad">
+                                <h:outputText value="#{fun.nombreFuncionalidad}" />
+                            </p:column>
+
+                            <p:column headerText="recurso">
+                                <h:outputText value="#{fun.recurso}" />
+                            </p:column>
+                        </p:dataTable>
+
+
                     </h:form>
+
+
                 </p:layoutUnit>
 
             </p:layout>

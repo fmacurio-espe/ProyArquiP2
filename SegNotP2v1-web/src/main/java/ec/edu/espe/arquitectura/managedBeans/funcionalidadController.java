@@ -10,6 +10,9 @@ import ec.edu.espe.arquitectura.session.FuncionalidadFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 /**
@@ -28,9 +31,21 @@ public class funcionalidadController implements Serializable {
     FuncionalidadFacade EJBFuncionalidad;
     
     
-    String codigoFuncionalidad;
-    String nombreFuncionalidad;
-    String recurso;
+    private String codigoFuncionalidad="";
+    private String nombreFuncionalidad="";
+    private String recurso="";
+    private String msg="";
+    
+    
+    List<Funcionalidad> listFuncionTodo = new ArrayList<Funcionalidad>();
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
     public FuncionalidadFacade getEJBFuncionalidad() {
         return EJBFuncionalidad;
@@ -65,28 +80,49 @@ public class funcionalidadController implements Serializable {
     public void setRecurso(String recurso) {
         this.recurso = recurso;
     }
-    
-    
-    
-    public funcionalidadController() {
+
+    public List<Funcionalidad> getListFuncionTodo() {
+        return listFuncionTodo;
     }
 
+    public void setListFuncionTodo(List<Funcionalidad> listFuncionTodo) {
+        this.listFuncionTodo = listFuncionTodo;
+    }
+    
+    
+
+    public funcionalidadController() {
+        
+    }
+    @PostConstruct
+    public void funcionalidadController(){
+        try {
+            this.listFuncionTodo = EJBFuncionalidad.listaFuncionalidadesTodas();
+        } catch (Exception e) {
+            System.out.println("error lista");
+        }
+    }
     
     
     
     
     public void insertarFuncionalidad(){
+        
         Funcionalidad objFun = new Funcionalidad();
         objFun.setCodigoFuncionalidad(codigoFuncionalidad);
         objFun.setNombreFuncionalidad(nombreFuncionalidad);
         objFun.setRecurso(recurso);
         System.out.println("los datos son" + objFun);
-        EJBFuncionalidad.insertarFuncionalidad(objFun);
+        msg="";
+        try {
+            EJBFuncionalidad.insertarFuncionalidad(objFun);
+            this.listFuncionTodo = EJBFuncionalidad.listaFuncionalidadesTodas();
+            this.msg="se ingreso correctamente";
+        } catch (Exception e) {
+            this.msg="error en el ingreso";
+        }
         
-        System.out.println(codigoFuncionalidad);
-        System.out.println(nombreFuncionalidad);
-        System.out.println(recurso);
-        System.out.println("se ejecuto correctamente");
+        System.out.println(msg);
     }
     
 }

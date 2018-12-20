@@ -8,6 +8,7 @@ package ec.edu.espe.arquitectura.session;
 import com.mongodb.MongoClient;
 import ec.edu.espe.arquitectura.model.Funcionalidad;
 import ec.edu.espe.arquitectura.model.Rol;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import org.mongodb.morphia.Datastore;
@@ -23,9 +24,7 @@ public class FuncionalidadFacade {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
-        public void insertarFuncionalidad(Funcionalidad funcIn) 
-    {
+    public void insertarFuncionalidad(Funcionalidad funcIn) {
         Morphia morphia = new Morphia();
 
         morphia.mapPackage("ec.edu.espe.arquitectura.model");
@@ -34,21 +33,29 @@ public class FuncionalidadFacade {
         //datastore.ensureIndexes();
         System.out.println("conexion establecida con MongoDB!");
         Funcionalidad func = new Funcionalidad();
-        
+
         func.setCodigoFuncionalidad(funcIn.getCodigoFuncionalidad());
         func.setNombreFuncionalidad(funcIn.getNombreFuncionalidad());
         func.setRecurso(funcIn.getRecurso());
-        
-        
+
         /*
         user.setNombres(nombres);
         user.setApellidos(apellidos);
         user.setCorreoElectronico(correoElectronico);
         user.setCorreoElectronico(correoElectronico);
-        */
-        
+         */
         ds.save(func);
         System.out.println("Funcionalidad Creada");
     }
-    
+
+    public List<Funcionalidad> listaFuncionalidadesTodas() {
+        Morphia morphia = new Morphia();
+        morphia.mapPackage("ec.edu.espe.arquitectura.model");
+        Datastore ds = morphia.createDatastore(new MongoClient(), "proyArquiP2");
+        System.out.println("conexion establecida");
+
+        List<Funcionalidad> listaFunc = ds.createQuery(Funcionalidad.class).asList();
+        System.out.println(listaFunc);
+        return listaFunc;
+    }
 }

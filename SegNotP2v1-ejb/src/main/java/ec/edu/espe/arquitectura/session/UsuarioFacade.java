@@ -7,6 +7,8 @@ package ec.edu.espe.arquitectura.session;
 
 import com.mongodb.MongoClient;
 import ec.edu.espe.arquitectura.model.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import org.mongodb.morphia.Datastore;
@@ -50,5 +52,32 @@ public class UsuarioFacade {
         ds.save(userIn);
         System.out.println("Usuario Creado");
     }
+     
+     
+     public Boolean validarUsuariopoCred(String user, String pass){
+         
+        Morphia morphia = new Morphia();
+        morphia.mapPackage("ec.edu.espe.arquitectura.model");
+        Datastore ds = morphia.createDatastore(new MongoClient(), "proyArquiP2");
+        System.out.println("conexion establecida");
+        
+        /*
+        Query<Usuario> qry=ds.createQuery(Usuario.class)
+                .field("codigoUsuario").equal("fmacurio").asList();
+        List<Usuario> usuarios=new ArrayList<Usuario>();
+*/
+        List<Usuario> userF =new ArrayList<Usuario>();
+        userF=ds.createQuery(Usuario.class)
+                .field("nombreUsuario").equal(user)
+                .asList();
+        if(userF.isEmpty()){
+            System.out.println("no se encontro");
+            return false;
+        }
+        else{
+            System.out.println("se encontro");
+            return true;
+        }
+     }
     
 }

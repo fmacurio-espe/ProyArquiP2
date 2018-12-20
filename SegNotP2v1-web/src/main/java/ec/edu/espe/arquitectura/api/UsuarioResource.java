@@ -6,6 +6,7 @@
 package ec.edu.espe.arquitectura.api;
 
 import ec.edu.espe.arquitectura.model.Usuario;
+import ec.edu.espe.arquitectura.msg.usuarioRQ;
 import ec.edu.espe.arquitectura.session.UsuarioFacade;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
@@ -17,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -25,7 +27,7 @@ import javax.ws.rs.core.Response;
  *
  * @author User
  */
-@Path("Usuario")
+@Path("usuario")
 @RequestScoped
 public class UsuarioResource {
 
@@ -45,13 +47,22 @@ public class UsuarioResource {
      * Retrieves representation of an instance of ec.edu.espe.arquitectura.api.UsuarioResource
      * @return an instance of java.lang.String
      */
+    
     @GET
+    @Path("val/{user}/{pass}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    public Response getJson(@PathParam("user") String user, @PathParam("pass") String pass) {
         //TODO return proper representation object
-        throw new UnsupportedOperationException();
+        if(EJBUsuario.validarUsuariopoCred(user, pass)){
+            return Response.accepted().build();
+        }
+        else{
+            return Response.status(401).build();
+        }
     }
 
+
+    
     /**
      * PUT method for updating or creating an instance of UsuarioResource
      * @param content representation for the resource
@@ -70,5 +81,8 @@ public class UsuarioResource {
         EJBUsuario.insertarUsuario(content);
         return Response.ok().build();
     }
+    
+    
+    
     
 }

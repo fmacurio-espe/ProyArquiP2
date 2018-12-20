@@ -29,10 +29,12 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(ec.edu.espe.arquitectura.api.FechaprocesoResource.class);
         resources.add(ec.edu.espe.arquitectura.api.FuncionalidadResource.class);
         resources.add(ec.edu.espe.arquitectura.api.NotificacionResource.class);
         resources.add(ec.edu.espe.arquitectura.api.RolResource.class);
         resources.add(ec.edu.espe.arquitectura.api.UsuarioResource.class);
+        resources.add(ec.edu.espe.arquitectura.api.ValidarLoginResource.class);
     }
     
 }
