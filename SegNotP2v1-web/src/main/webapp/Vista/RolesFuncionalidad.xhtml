@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Registro Usuarios</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <h1> Seguridades - Banco BanQuito</h1>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    <h4>Alexander Cajas - Fernando Acurio</h4>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Usuarios" outcome="/Vista/Usuarios.xhtml"/>
+                            <p:menuitem value="Funcionalidad" outcome="/Vista/Funcionalidad.xhtml"/>
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form>
+                        <h1>Registro de Funcionalidades A Rol</h1>
+                        
+                        <h:panelGrid columns="2" cellpadding="6">
+                            <p:outputLabel value="Nombre de Rol "/>
+                            <p:inputText value="#{usuarioController.codigoUsuario}" />
+                            
+                            <p:outputLabel value="Descripción: "/>
+                            <p:inputText value="#{usuarioController.nombreUsuario}"/>
+                                                        
+                        </h:panelGrid>
+                        <br/>
+                        <br/>
+                        
+
+                        <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
+                            <f:selectItem itemLabel="Funcionalidad 1" itemValue="Funcionalidad1" />
+                            <f:selectItem itemLabel="Funcionalidad 2" itemValue="Funcionalidad2" />
+                            <f:selectItem itemLabel="Funcionalidad 3" itemValue="Funcionalidad3" />
+                            <f:selectItem itemLabel="Funcionalidad 4" itemValue="Funcionalidad4" />
+                            <f:selectItem itemLabel="Funcionalidad 5" itemValue="Funcionalidad5" />
+                        </p:selectManyCheckbox>
+                        <br/>
+                        <br/>
+                        
+                        <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
+                            <f:selectItem itemLabel="Funcionalidad A" itemValue="FuncionalidadA" />
+                            <f:selectItem itemLabel="Funcionalidad B" itemValue="FuncionalidadB" />
+                            <f:selectItem itemLabel="Funcionalidad C" itemValue="FuncionalidadC" />
+                            <f:selectItem itemLabel="Funcionalidad D" itemValue="FuncionalidadD" />
+                            <f:selectItem itemLabel="Funcionalidad E" itemValue="FuncionalidadE" />
+                        </p:selectManyCheckbox>
+                        <br/>
+                        <br/>
+                        
+                        <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{usuarioController.insertarUsuario()}" />
+                        
+                        
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

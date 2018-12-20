@@ -69,11 +69,9 @@ public class funcionalidadController implements Serializable {
     
     
     public funcionalidadController() {
+    
     }
 
-    
-    
-    
     
     public void insertarFuncionalidad(){
         Funcionalidad objFun = new Funcionalidad();
@@ -84,8 +82,6 @@ public class funcionalidadController implements Serializable {
         EJBFuncionalidad.insertarFuncionalidad(objFun);
         
         System.out.println(codigoFuncionalidad);
-        System.out.println(nombreFuncionalidad);
-        System.out.println(recurso);
         System.out.println("se ejecuto correctamente");
     }
     
