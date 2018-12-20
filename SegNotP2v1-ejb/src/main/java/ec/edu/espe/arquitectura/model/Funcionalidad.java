@@ -9,6 +9,8 @@ import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.IndexOptions;
+import org.mongodb.morphia.annotations.Indexed;
 import org.mongodb.morphia.annotations.Property;
 
 /**
@@ -22,6 +24,7 @@ public class Funcionalidad {
     
     
     @Property("codigoFuncionalidad")
+    @Indexed(options = @IndexOptions(name = "codigoFuncionalidad",unique = true))
     private String codigoFuncionalidad;
     @Property("nombreFuncionalidad")
     private String nombreFuncionalidad;

@@ -39,7 +39,19 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
+                    <h:form>
+                        <p:outputLabel value="Codigo de Funcionalidad: "/>
+                        <p:inputText value="#{funcionalidadController.codigoFuncionalidad}" />
+                        <br/>
+                        <p:outputLabel value="Nombre de Funcionalidad: "/>
+                        <p:inputText value="#{funcionalidadController.nombreFuncionalidad}"/>
+                        <br/>
+                        <p:outputLabel value="Recurso de la funcionalidad"/>
+                        <p:inputText value="#{funcionalidadController.recurso}"/>
+                        <br/>
+                        <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{funcionalidadController.insertarFuncionalidad()}" />
+                        
+                    </h:form>
                 </p:layoutUnit>
 
             </p:layout>
