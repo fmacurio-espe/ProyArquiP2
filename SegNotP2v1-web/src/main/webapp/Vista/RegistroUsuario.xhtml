@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Registro Usuarios</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <h1> Seguridades - Banco BanQuito</h1>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    <h4>Alexander Cajas - Fernando Acurio</h4>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                   <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
+                            <p:menuitem value="Rol" outcome="RolesFuncionalidad.xhtml"/>
+                            <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
+                            <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
+                            
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form>
+                        <h1>Registro de Usuarios</h1>
+                        
+                        <h:panelGrid columns="2" cellpadding="6">
+                            <p:outputLabel value="Código de Usuario: "/>
+                            <p:inputText value="#{usuarioController.codigoUsuario}" />
+                            
+                            <p:outputLabel value="Nombre de Usuario: "/>
+                            <p:inputText value="#{usuarioController.nombreUsuario}"/>
+                            
+                            <p:outputLabel value="Contraseña:"/>
+                            <p:password id="nonFeedback" value="#{usuarioController.contrasenia}"/>
+                            
+                            <p:outputLabel value="Cédula / Pasaporte:"/>
+                            <p:inputText value="#{usuarioController.identificacion}"/>
+                            
+                            <p:outputLabel value="Nombres:"/>
+                            <p:inputText value="#{usuarioController.nombres}"/>
+                            
+                            <p:outputLabel value="Apellidos:"/>
+                            <p:inputText value="#{usuarioController.apellidos}"/>
+                            
+                            <p:outputLabel value="Correo Electrónico:"/>
+                            <p:inputText value="#{usuarioController.correo}"/>
+                                                        
+                        </h:panelGrid>
+                        <br/>
+                        <br/>
+                        
+
+                        <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
+                            <f:selectItem itemLabel="Administrador" itemValue="Administrador" />
+                            <f:selectItem itemLabel="Banca Electrónica" itemValue="UsuarioBancaElectronica" />
+                            <f:selectItem itemLabel="Transacciones" itemValue="Transacciones" />
+                            <f:selectItem itemLabel="Rol 4" itemValue="Rol4" />
+                            <f:selectItem itemLabel="Rol 5" itemValue="Rol5" />
+                        </p:selectManyCheckbox>
+                        <br/>
+                        <br/>
+                        
+                        <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{usuarioController.insertarUsuario()}" />
+                        
+                        
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

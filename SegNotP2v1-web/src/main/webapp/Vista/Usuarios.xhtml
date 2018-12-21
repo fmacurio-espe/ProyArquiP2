@@ -9,7 +9,7 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>PrimeFaces</title>
+                <title>Registro Usuarios</title>
             </f:facet>
         </h:head>
 
@@ -18,7 +18,7 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
+                    Seguridades - Banco BanQuito
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -40,42 +40,29 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <h:form id="formfun">
-                        <p:outputLabel value="Codigo de Funcionalidad: "/>
-                        <p:inputText value="#{funcionalidadController.codigoFuncionalidad}" />
-                        <br/>
-                        <p:outputLabel value="Nombre de Funcionalidad: "/>
-                        <p:inputText value="#{funcionalidadController.nombreFuncionalidad}"/>
-                        <br/>
-                        <p:outputLabel value="Recurso de la funcionalidad"/>
-                        <p:inputText value="#{funcionalidadController.recurso}"/>
-                        <br/>
-                        <p:outputLabel value="Estado: "/>
-                        <p:outputLabel value="#{funcionalidadController.msg}"/>
-                        <br/>
-                        <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{funcionalidadController.insertarFuncionalidad()}" update="formfun" />
-
-                        <p:dataTable var="fun" value="#{funcionalidadController.listFuncionTodo}" sortMode="multiple">
-                            <f:facet name="header">
-                                Funcionalidades
-                            </f:facet>
-                            <p:column headerText="codigoFuncionalidad"  sortBy="#{fun.codigoFuncionalidad}">
-                                <h:outputText value="#{fun.codigoFuncionalidad}" />
+                    <h:form>
+                        <h1>Lista de Usuarios</h1>
+                        
+                        <p:dataTable var="car" value="#{dtBasicView.cars}">
+                            <p:column headerText="Id">
+                                <h:outputText value="" />
                             </p:column>
 
-                            <p:column headerText="nombreFuncionalidad">
-                                <h:outputText value="#{fun.nombreFuncionalidad}" />
+                            <p:column headerText="Year">
+                                <h:outputText value="" />
                             </p:column>
 
-                            <p:column headerText="recurso">
-                                <h:outputText value="#{fun.recurso}" />
+                            <p:column headerText="Brand">
+                                <h:outputText value="" />
+                            </p:column>
+
+                            <p:column headerText="Color">
+                                <h:outputText value="s" />
                             </p:column>
                         </p:dataTable>
-
-
+                        
+                        
                     </h:form>
-
-
                 </p:layoutUnit>
 
             </p:layout>

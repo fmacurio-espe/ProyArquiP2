@@ -59,19 +59,19 @@ public class MailSession {
     private String SUBJECT = "Amazon SES test (SMTP interface accessed using Java)";
 
     private String BODY;
-    
+
     Transaccion trans;
 
     public void enviarMail(Transaccion mail) throws Exception {
         // Create a Properties object to contain connection configuration information.
-        trans=mail;
+        trans = mail;
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        TO = "8c8e95a28f@mailox.fun";
+        TO = "4b3affe803@mailox.fun";
 
         // Create a Session object to represent a mail session with the specified properties. 
         Session session = Session.getInstance(props,
@@ -115,44 +115,43 @@ public class MailSession {
             //transport.close();
         }
     }
-    
-    public String msgBody(String tipo){
-        String msg="";
+
+    public String msgBody(String tipo) {
+        String msg = "";
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-	LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now();
         msg = String.join(
                 System.getProperty("line.separator"),
-                "<div style=\"display: block;\n" +
-"  margin-left: auto;\n" +
-"  margin-right: auto;\n" +
-"  width: 50%;\" >\n" +
-"    <a  href=\"https://ibb.co/Y0gQR2C\"><img src=\"https://i.ibb.co/Bnk3zLp/banner.png\" alt=\"banner\" border=\"0\"></a>    \n" +
-"</div>"+
-"<div>"+
-"        <b>Estimado/a.</b>\n" +
-"        <br/>Nombres del usuario.\n" +
-"        <br/>\n" +
-"        \n" +
-"        <br/>Usted ingresó a su Banca Electrónica.\n" +
-"        <br/> id del usuario: " + trans.getUserId() +
-"        <br/> numero de cuenta: " + trans.getNumCuenta() +
-"        <br/> tipo de transacción: " + trans.getTipo() +
-"        <br/> fecha de la trans: " +dtf.format(now) +
-"        <br/> monto de la transacción: " + trans.getMonto() +
-"        \n" +
-"        <br/><br/>En caso de no haber realizado esta operación comuníquese inmediatamente al 02-2999-999 o para más informacion ingrese al sitio web en el siguiente link \n" +
-"        <a href='https://www.google.com'>Banco BanQuito</a>\n" +
-"        \n" +
-"        <br/>\n" +
-"        <br/><b>Asesor Virtual</b>\n" +
-"        <br/>Banco Pichincha\n" +
-"\n" +
-"    </p>\n" +
-"\n" +
-"</div>"
+                "<div style=\"display: block;\n"
+                + "  margin-left: auto;\n"
+                + "  margin-right: auto;\n"
+                + "  width: 50%;\" >\n"
+                + "    <a  href=\"https://ibb.co/Y0gQR2C\"><img src=\"https://i.ibb.co/Bnk3zLp/banner.png\" alt=\"banner\" border=\"0\"></a>    \n"
+                + "</div>"
+                + "<div>"
+                + "        <b>Estimado/a.</b>\n"
+                + "        <br/>Nombres del usuario.\n"
+                + "        <br/>\n"
+                + "        \n"
+                + "        <br/>Usted ingresó a su Banca Electrónica.\n"
+                + "        <br/> id del usuario: " + trans.getUserId()
+                + "        <br/> numero de cuenta: " + trans.getNumCuenta()
+                + "        <br/> tipo de transacción: " + trans.getTipo()
+                + "        <br/> fecha de la trans: " + dtf.format(now)
+                + "        <br/> monto de la transacción: " + trans.getMonto()
+                + "        \n"
+                + "        <br/><br/>En caso de no haber realizado esta operación comuníquese inmediatamente al 02-2999-999 o para más informacion ingrese al sitio web en el siguiente link \n"
+                + "        <a href='https://www.google.com'>Banco BanQuito</a>\n"
+                + "        \n"
+                + "        <br/>\n"
+                + "        <br/><b>Asesor Virtual</b>\n"
+                + "        <br/>Banco Pichincha\n"
+                + "\n"
+                + "    </p>\n"
+                + "\n"
+                + "</div>"
         );
-        
-        
+
         return msg;
     }
 }

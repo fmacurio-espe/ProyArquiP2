@@ -18,6 +18,7 @@ import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -62,9 +63,9 @@ public class NotificacionResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void postJson(Transaccion content) throws Exception {
+    public Response postJson(Transaccion content) throws Exception {
         mail.enviarMail(content);
         
-        
+        return Response.ok().build();
     }
 }

@@ -6,6 +6,8 @@
 package ec.edu.espe.arquitectura.api;
 
 import ec.edu.espe.arquitectura.model.Usuario;
+import ec.edu.espe.arquitectura.session.UsuarioFacade;
+import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -31,6 +33,10 @@ public class ValidarLoginResource {
     private UriInfo context;
     
 
+    @EJB
+    UsuarioFacade EJBUsuario;
+    
+    
     /**
      * Creates a new instance of ValidarLoginResource
      */
@@ -64,6 +70,13 @@ public class ValidarLoginResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response postJson(Usuario usuRQ) {
         System.out.println("ook");
-        return Response.ok(usuRQ).build();
+        if(EJBUsuario.validarUsuariopoCred(usuRQ.getNombreUsuario(), usuRQ.getContrasenia())){
+            return Response.accepted().build();
+        }
+        else{
+            return Response.status(401).build();
+        }
+        
+        
     }
 }

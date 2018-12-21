@@ -6,6 +6,7 @@
 package ec.edu.espe.arquitectura.session;
 
 import com.mongodb.MongoClient;
+import com.mongodb.client.gridfs.GridFSBuckets;
 import ec.edu.espe.arquitectura.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +70,7 @@ public class UsuarioFacade {
         List<Usuario> userF =new ArrayList<Usuario>();
         userF=ds.createQuery(Usuario.class)
                 .field("nombreUsuario").equal(user)
+                .field("contrasenia").equal(pass)
                 .asList();
         if(userF.isEmpty()){
             System.out.println("no se encontro");

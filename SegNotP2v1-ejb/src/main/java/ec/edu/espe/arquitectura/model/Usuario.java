@@ -32,7 +32,17 @@ public class Usuario{
     @Property("contrasenia")    
     private String contrasenia;
     
-    //@Property("Rol")
+    @Property("nombres")    
+    private String nombres;
+    
+    @Property("apellidos")    
+    private String apellidos;
+    
+    @Property("correoE")    
+    private String correoE;
+    
+    
+//@Property("Rol")
     //private List<Rol> rol;
     
     @Property("codigoRol")
@@ -61,12 +71,6 @@ public class Usuario{
     public void setCodigoRol(List<String> codigoRol) {
         this.codigoRol = codigoRol;
     }
-
-   
-
-    
-
-   
 
     
     public ObjectId getId() {
@@ -101,10 +105,38 @@ public class Usuario{
         this.contrasenia = contrasenia;
     }
 
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getCorreoE() {
+        return correoE;
+    }
+
+    public void setCorreoE(String correoE) {
+        this.correoE = correoE;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", codIdentificacion=" + codIdentificacion + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", codigoRol=" + codigoRol + '}';
+        return "Usuario{" + "id=" + id + ", codIdentificacion=" + codIdentificacion + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", nombres=" + nombres + ", apellidos=" + apellidos + ", correoE=" + correoE + ", codigoRol=" + codigoRol + '}';
     }
+
+
+    
+    
 
 
     
