@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.arquitectura.model;
 
+import java.util.Arrays;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
@@ -32,14 +33,14 @@ public class Usuario{
     @Property("contrasenia")    
     private String contrasenia;
     
-    @Property("nombres")    
-    private String nombres;
+    @Property("numUser")    
+    private Integer numUser;
     
-    @Property("apellidos")    
-    private String apellidos;
+    @Property("rolesUsuarios")    
+    private String[] rolesUsuarios;
     
-    @Property("correoE")    
-    private String correoE;
+    //@Property("numusuario")    
+    //private Integer numusuario;
     
     
 //@Property("Rol")
@@ -105,39 +106,30 @@ public class Usuario{
         this.contrasenia = contrasenia;
     }
 
-    public String getNombres() {
-        return nombres;
+    public Integer getNumUser() {
+        return numUser;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNumUser(Integer numUser) {
+        this.numUser = numUser;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getRolesUsuarios() {
+        return Arrays.toString(rolesUsuarios);
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setRolesUsuarios(String[] rolesUsuarios) {
+        this.rolesUsuarios = rolesUsuarios;
     }
 
-    public String getCorreoE() {
-        return correoE;
-    }
-
-    public void setCorreoE(String correoE) {
-        this.correoE = correoE;
-    }
+    
+    
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", codIdentificacion=" + codIdentificacion + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", nombres=" + nombres + ", apellidos=" + apellidos + ", correoE=" + correoE + ", codigoRol=" + codigoRol + '}';
+        return "Usuario{" + "id=" + id + ", codIdentificacion=" + codIdentificacion + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", codigoRol=" + codigoRol + '}';
     }
 
-
-    
-    
-
-
+   
     
 }
