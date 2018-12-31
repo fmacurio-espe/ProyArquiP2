@@ -78,7 +78,7 @@ public class UsuarioResource {
         System.out.println("Los datos POST recibidos ");
         System.out.println(content);
         
-        EJBUsuario.insertarUsuario(content);
+        EJBUsuario.insertarUsuarios(content);
         return Response.ok().build();
     }
     

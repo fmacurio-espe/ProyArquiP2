@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.arquitectura.model;
 
+import java.util.Arrays;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
@@ -32,6 +33,14 @@ public class Usuario{
     @Property("contrasenia")    
     private String contrasenia;
     
+    @Property("numUser")    
+    private Integer numUser;
+    
+    @Property("rolesUsuarios")    
+    private String[] rolesUsuarios;
+    
+    //@Property("numusuario")    
+    //private Integer numusuario;
     
     
 //@Property("Rol")
@@ -97,15 +106,30 @@ public class Usuario{
         this.contrasenia = contrasenia;
     }
 
+    public Integer getNumUser() {
+        return numUser;
+    }
+
+    public void setNumUser(Integer numUser) {
+        this.numUser = numUser;
+    }
+
+    public String getRolesUsuarios() {
+        return Arrays.toString(rolesUsuarios);
+    }
+
+    public void setRolesUsuarios(String[] rolesUsuarios) {
+        this.rolesUsuarios = rolesUsuarios;
+    }
+
+    
+    
+
     @Override
     public String toString() {
         return "Usuario{" + "id=" + id + ", codIdentificacion=" + codIdentificacion + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", codigoRol=" + codigoRol + '}';
     }
 
-
-    
-    
-
-
+   
     
 }

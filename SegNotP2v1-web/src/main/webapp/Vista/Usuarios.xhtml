@@ -11,6 +11,12 @@
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Registro Usuarios</title>
             </f:facet>
+           
+            <style type="text/css">
+                .ui-row-editor .ui-row-editor-pencil {
+                    margin-left:8px;
+                }
+            </style>
         </h:head>
 
         <h:body>
@@ -29,9 +35,10 @@
                     <p:menu>
                         <p:submenu label="Resources">
                             <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
+                            <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
                             <p:menuitem value="Rol" outcome="RolesFuncionalidad.xhtml"/>
                             <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
-                            <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
+                            
                             
 
                         </p:submenu>
@@ -43,25 +50,38 @@
                     <h:form>
                         <h1>Lista de Usuarios</h1>
                         
-                        <p:dataTable var="car" value="#{dtBasicView.cars}">
-                            <p:column headerText="Id">
-                                <h:outputText value="" />
+                        <p:dataTable var="users" value="#{usuarioController.extraerUsuarios()}">
+                            <p:column headerText="Código Usuario" style="width:25;">
+                                <h:outputText value="#{users.codIdentificacion}" />
                             </p:column>
 
-                            <p:column headerText="Year">
-                                <h:outputText value="" />
+                            <p:column headerText="Nombre de Usuario" style="width:25;">
+                                <h:outputText value="#{users.nombreUsuario}" />
                             </p:column>
 
-                            <p:column headerText="Brand">
-                                <h:outputText value="" />
+                            <p:column headerText="Clave" style="width:30;">
+                                <h:outputText value="#{users.contrasenia}" />
                             </p:column>
-
-                            <p:column headerText="Color">
-                                <h:outputText value="s" />
+                            <p:column headerText="Clave" style="width:30;">
+                                <h:outputText value="#{users.numUser}" />
+                            </p:column>
+                            
+                            <p:column headerText="Clave" style="width:30;">
+                                <h:outputText value="#{users.rolesUsuarios}" />
+                            </p:column>
+                            
+                            <p:column style="width:35px;">
+                                <h:selectManyCheckbox id="selectCheck" valueChangeListener="#{usuarioController.checkUsuario}">
+                                    <f:selectItem itemValue="#{users.numUser}" itemLabel="" />
+                                </h:selectManyCheckbox>
+                                    
+                            </p:column>
+                            <p:column style="width:35px;">
+                                <p:rowEditor/>
                             </p:column>
                         </p:dataTable>
                         
-                        
+                        <h:commandButton value="Eliminar" action="#{usuarioController.eliminarUsuario}"/>
                     </h:form>
                 </p:layoutUnit>
 

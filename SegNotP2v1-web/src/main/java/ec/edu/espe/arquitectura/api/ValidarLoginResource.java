@@ -52,10 +52,10 @@ public class ValidarLoginResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getJson() {
+    public void getJson() {
         //TODO return proper representation object
         System.out.println("ook");
-        return Response.ok().build();
+        //return Response.ok().build();
     }
 
     /**
