@@ -13,7 +13,18 @@ package ec.edu.espe.arquitectura.msg;
 public class usuarioRQ {
     String usuario;
     String clave;
+    String ci;
 
+    public String getCi() {
+        return ci;
+    }
+
+    public void setCi(String ci) {
+        this.ci = ci;
+    }
+
+    
+    
     public String getUsuario() {
         return usuario;
     }

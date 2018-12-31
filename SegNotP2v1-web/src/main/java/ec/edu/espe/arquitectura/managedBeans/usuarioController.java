@@ -115,9 +115,6 @@ public class usuarioController implements Serializable {
         objUsu.setCodIdentificacion(codigoUsuario);
         objUsu.setNombreUsuario(nombreUsuario);
         objUsu.setContrasenia(contrasenia);
-        objUsu.setNombres(nombres);
-        objUsu.setApellidos(apellidos);
-        objUsu.setCorreoE(correo);
         
                 
                 
