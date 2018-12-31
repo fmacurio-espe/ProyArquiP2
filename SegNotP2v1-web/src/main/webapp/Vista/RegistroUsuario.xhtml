@@ -53,30 +53,22 @@
                             <p:outputLabel value="Contraseña:"/>
                             <p:password id="nonFeedback" value="#{usuarioController.contrasenia}"/>
                             
-                            <p:outputLabel value="Cédula / Pasaporte:"/>
-                            <p:inputText value="#{usuarioController.identificacion}"/>
-                            
-                            <p:outputLabel value="Nombres:"/>
-                            <p:inputText value="#{usuarioController.nombres}"/>
-                            
-                            <p:outputLabel value="Apellidos:"/>
-                            <p:inputText value="#{usuarioController.apellidos}"/>
-                            
-                            <p:outputLabel value="Correo Electrónico:"/>
-                            <p:inputText value="#{usuarioController.correo}"/>
-                                                        
+                            <p:outputLabel value="Num user:"/>
+                            <p:inputText id="numUser" value="#{usuarioController.numUser}"/>
+                           
                         </h:panelGrid>
                         <br/>
                         <br/>
                         
-
-                        <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
+                        
+                        <h:selectManyCheckbox id="rolesDeUser" value="#{usuarioController.rolesUsuario}">
                             <f:selectItem itemLabel="Administrador" itemValue="Administrador" />
                             <f:selectItem itemLabel="Banca Electrónica" itemValue="UsuarioBancaElectronica" />
                             <f:selectItem itemLabel="Transacciones" itemValue="Transacciones" />
                             <f:selectItem itemLabel="Rol 4" itemValue="Rol4" />
                             <f:selectItem itemLabel="Rol 5" itemValue="Rol5" />
-                        </p:selectManyCheckbox>
+                        </h:selectManyCheckbox>
+                        
                         <br/>
                         <br/>
                         
