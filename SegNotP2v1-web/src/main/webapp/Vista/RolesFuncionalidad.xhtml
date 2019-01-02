@@ -25,14 +25,14 @@
                     <h4>Alexander Cajas - Fernando Acurio</h4>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <p:layoutUnit position="west" size="175" header="Menú" collapsible="true">
                    <p:menu>
-                        <p:submenu label="Resources">
+                        <p:submenu label="Opciones">
                             <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
-                            <p:menuitem value="Rol" outcome="RolesFuncionalidad.xhtml"/>
+                            <p:menuitem value="Agregar Rol" outcome="RolesFuncionalidad.xhtml"/>
+                            <p:menuitem value="Ver Roles" outcome="Roles.xhtml"/>
                             <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
                             <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
-                            
 
                         </p:submenu>
 
@@ -44,27 +44,25 @@
                         <h1>Registro de Funcionalidades A Rol</h1>
                         
                         <h:panelGrid columns="2" cellpadding="6">
-                            <p:outputLabel value="Nombre de Rol "/>
+                            <p:outputLabel value="Código Rol:"/>
+                            <p:inputText value="#{rolController.codigoRol}" />
+                            
+                            <p:outputLabel value="Nombre de Rol:"/>
                             <p:inputText value="#{rolController.nombreRol}" />
                             
                             <p:outputLabel value="Descripción: "/>
-                            <p:inputText value="#{rolController.descripcion}"/>
+                            <p:inputText value="#{rolController.descripcionRol}"/>
                                                         
                         </h:panelGrid>
                         <br/>
                         <br/>
                         
-
-                        <p:selectManyMenu var="fun" id="advanced" value="#{rolController.selfun}" >
-                            <f:selectItems var="t" value="#{rolController.lfun}" itemLabel="#{t.nombreFuncionalidad}" itemValue="#{t.codigoFuncionalidad}"/>
-                        </p:selectManyMenu>
-                        <br/>
-                        <br/>
+                        <!--
+                        <p:selectManyMenu var="fun" id="advanced" value="" >
+                            <f:selectItems var="t" value="" itemLabel="" itemValue=""/>
+                        </p:selectManyMenu>-->
                         
-                        <br/>
-                        <br/>
-                        
-                        <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{usuarioController.insertarUsuario()}" />
+                        <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{rolController.insertarRol()}" />
                         
                         
                     </h:form>

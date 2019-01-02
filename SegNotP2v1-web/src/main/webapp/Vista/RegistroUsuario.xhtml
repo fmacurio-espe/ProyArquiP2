@@ -11,10 +11,13 @@
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Registro Usuarios</title>
             </f:facet>
+            
+            
         </h:head>
-
+        
+        
         <h:body>
-
+            
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
@@ -25,13 +28,15 @@
                     <h4>Alexander Cajas - Fernando Acurio</h4>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <p:layoutUnit position="west" size="175" header="Menú" collapsible="true">
                    <p:menu>
-                        <p:submenu label="Resources">
+                        <p:submenu label="Opciones">
                             <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
-                            <p:menuitem value="Rol" outcome="RolesFuncionalidad.xhtml"/>
-                            <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
                             <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
+                            <p:menuitem value="Agregar Rol" outcome="RolesFuncionalidad.xhtml"/>
+                            <p:menuitem value="Ver Roles" outcome="Roles.xhtml"/>
+                            <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
+                            
                             
 
                         </p:submenu>
@@ -63,10 +68,9 @@
                         
                         <h:selectManyCheckbox id="rolesDeUser" value="#{usuarioController.rolesUsuario}">
                             <f:selectItem itemLabel="Administrador" itemValue="Administrador" />
-                            <f:selectItem itemLabel="Banca Electrónica" itemValue="UsuarioBancaElectronica" />
-                            <f:selectItem itemLabel="Transacciones" itemValue="Transacciones" />
-                            <f:selectItem itemLabel="Rol 4" itemValue="Rol4" />
-                            <f:selectItem itemLabel="Rol 5" itemValue="Rol5" />
+                            <f:selectItem itemLabel="Banca Electrónica" itemValue="BancaElectronica" />
+                            <f:selectItem itemLabel="Préstamos" itemValue="Prestamos" />
+                            <f:selectItems value="#{rolController.listaDeRoles}" var="roles" itemLabel="#{roles.nombreRol}" itemValue="#{roles.nombreRol}" />
                         </h:selectManyCheckbox>
                         
                         <br/>

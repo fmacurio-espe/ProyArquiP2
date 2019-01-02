@@ -9,7 +9,7 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Lista de Usuarios</title>
+                <title>Lista de Roles</title>
             </f:facet>
            
             <style type="text/css">
@@ -37,7 +37,6 @@
                             <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
                             <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
                             <p:menuitem value="Agregar Rol" outcome="RolesFuncionalidad.xhtml"/>
-                            <p:menuitem value="Ver Roles" outcome="Roles.xhtml"/>
                             <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
                             
                             
@@ -49,42 +48,26 @@
 
                 <p:layoutUnit position="center">
                     <h:form>
-                        <h1>Lista de Usuarios</h1>
+                        <h1>Lista de Roles</h1>
                         
-                        <p:dataTable var="users" value="#{usuarioController.extraerUsuarios()}">
-                            <p:column headerText="Código Usuario" style="width:25;">
-                                <h:outputText value="#{users.codIdentificacion}" />
+                        <p:dataTable var="rol" value="#{rolController.extraerRolesUser()}">
+                            <p:column headerText="Código de Rol" style="width:25;">
+                                <h:outputText value="#{rol.codigoRol}" />
                             </p:column>
 
-                            <p:column headerText="Clave" style="width:30;">
-                                <h:outputText value="#{users.numUser}" />
-                            </p:column>
-                            
-                            <p:column headerText="Nombre de Usuario" style="width:25;">
-                                <h:outputText value="#{users.nombreUsuario}" />
+                            <p:column headerText="Nombre de Rol" style="width:25;">
+                                <h:outputText value="#{rol.nombreRol}" />
                             </p:column>
 
-                            <p:column headerText="Clave" style="width:30;">
-                                <h:outputText value="#{users.contrasenia}" />
-                            </p:column>
-                            
-                            
-                            <p:column headerText="Clave" style="width:30;">
-                                <h:outputText value="#{users.rolesUsuarios}" />
+                            <p:column headerText="Descripción" style="width:30;">
+                                <h:outputText value="#{rol.descripcionRol}" />
                             </p:column>
                             
                             <p:column style="width:35px;">
-                                <h:selectManyCheckbox id="selectCheck" valueChangeListener="#{usuarioController.checkUsuario}">
-                                    <f:selectItem itemValue="#{users.numUser}" itemLabel="" />
-                                </h:selectManyCheckbox>
-                                    
-                            </p:column>
-                            <p:column style="width:35px;">
-                                
+                                <p:rowEditor/>
                             </p:column>
                         </p:dataTable>
                         
-                        <h:commandButton value="Eliminar" action="#{usuarioController.eliminarUsuario}"/>
                     </h:form>
                 </p:layoutUnit>
 

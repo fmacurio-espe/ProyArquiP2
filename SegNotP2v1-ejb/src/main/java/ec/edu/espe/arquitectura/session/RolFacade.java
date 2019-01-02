@@ -38,10 +38,11 @@ public class RolFacade {
         Rol rol = new Rol();
         
         rol.setCodigoRol(rolIn.getCodigoRol());
-        rol.setDescripcionRol(rolIn.getDescripcionRol());
         rol.setNombreRol(rolIn.getNombreRol());
+        rol.setDescripcionRol(rolIn.getDescripcionRol());
         
-        rol.setCodigoFuncionalidad(rolIn.getCodigoFuncionalidad());
+        
+        //rol.setCodigoFuncionalidad(rolIn.getCodigoFuncionalidad());
         /*
         user.setNombres(nombres);
         user.setApellidos(apellidos);
@@ -69,6 +70,21 @@ public class RolFacade {
         rolF=ds.createQuery(Rol.class).asList();
         return rolF;
      }
-    
+
+       public List<Rol> seleccionarRolesUsuario(){
+         
+        Morphia morphia = new Morphia();
+        morphia.mapPackage("ec.edu.espe.arquitectura.model");
+        Datastore ds = morphia.createDatastore(new MongoClient(), "proyArquiP2");
+        System.out.println("conexion establecida");
+        
+        List<Rol> rolesL = null;
+        rolesL = new ArrayList<Rol>();
+        rolesL=ds.find(Rol.class).asList();
+        //Devuelve solo campo contrasenia
+        //userF=ds.find(Usuario.class).retrievedFields( true, "contrasenia").asList();
+         
+         return rolesL;
+     }
     
 }

@@ -38,8 +38,8 @@ public class Rol {
     @Property("descripcionRol")
     private String descripcionRol;
 
-    @Property("codigoFuncionalidad")
-    private List<String> codigoFuncionalidad;
+    //@Property("codigoFuncionalidad")
+    //private List<String> codigoFuncionalidad;
     
     public Rol() {
     }
@@ -68,22 +68,21 @@ public class Rol {
         this.descripcionRol = descripcionRol;
     }
 
-    public List<String> getCodigoFuncionalidad() {
+    /*public List<String> getCodigoFuncionalidad() {
         return codigoFuncionalidad;
     }
 
     public void setCodigoFuncionalidad(List<String> codigoFuncionalidad) {
         this.codigoFuncionalidad = codigoFuncionalidad;
-    }
-
-    
-    
+    }*/
     
     @Override
     public String toString() {
-        return "rol{" + ", codigoRol=" + codigoRol + ", nombreRol=" + nombreRol + ", descripcionRol=" + descripcionRol + ", funcionalidad=" +  '}';
+        //return "rol{" + ", codigoRol=" + codigoRol + ", nombreRol=" + nombreRol + ", descripcionRol=" + descripcionRol + ", funcionalidad=" +  '}';
+        
+        
+        return "rol{" + ", codigoRol=" + codigoRol + ", nombreRol=" + nombreRol + ", descripcionRol=" + descripcionRol +'}';
 //        return "rol{" + ", codigoRol=" + codigoRol + ", nombreRol=" + nombreRol + ", descripcionRol=" + descripcionRol + ", funcionalidad=" + funcionalidades + '}';
-
     }
 
     @Override
