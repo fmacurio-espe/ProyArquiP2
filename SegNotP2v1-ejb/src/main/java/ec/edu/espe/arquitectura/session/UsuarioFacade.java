@@ -78,7 +78,7 @@ public class UsuarioFacade {
     }
      
      
-     public Boolean validarUsuariopoCred(String user, String pass){
+     public List<Usuario> validarUsuariopoCred(String user, String pass){
          
         Morphia morphia = new Morphia();
         morphia.mapPackage("ec.edu.espe.arquitectura.model");
@@ -92,11 +92,11 @@ public class UsuarioFacade {
                 .asList();
         if(userF.isEmpty()){
             System.out.println("no se encontro");
-            return false;
+            return null;
         }
         else{
             System.out.println("se encontro");
-            return true;
+            return userF;
         }
      }
     

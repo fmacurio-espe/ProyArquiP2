@@ -53,7 +53,7 @@ public class UsuarioResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getJson(@PathParam("user") String user, @PathParam("pass") String pass) {
         //TODO return proper representation object
-        if(EJBUsuario.validarUsuariopoCred(user, pass)){
+        if(!(EJBUsuario.validarUsuariopoCred(user, pass)==null)){
             return Response.accepted().build();
         }
         else{
