@@ -14,6 +14,17 @@ public class usuarioRQ {
     String usuario;
     String clave;
     String ci;
+    String rol;
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
+    
 
     public String getCi() {
         return ci;
@@ -43,9 +54,11 @@ public class usuarioRQ {
 
     @Override
     public String toString() {
-        return "usuarioRQ{" + "usuario=" + usuario + ", clave=" + clave + '}';
+        return "usuarioRQ{" + "usuario=" + usuario + ", clave=" + clave + ", ci=" + ci + ", rol=" + rol + '}';
     }
 
+    
+    
     public usuarioRQ() {
     }
     

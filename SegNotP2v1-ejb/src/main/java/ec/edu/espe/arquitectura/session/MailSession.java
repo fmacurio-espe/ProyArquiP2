@@ -35,7 +35,7 @@ public class MailSession {
 
     // Replace recipient@example.com with a "To" address. If your account 
     // is still in the sandbox, this address must be verified.
-    private String TO = "071ca1270e@mailox.fun";
+    private String TO = "pruebaarqui4@gmail.com";
 
     // Replace smtp_username with your Amazon SES SMTP user name.
     private String SMTP_USERNAME = "smtp_username";
@@ -71,7 +71,7 @@ public class MailSession {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        TO = "4b3affe803@mailox.fun";
+        TO = "pruebaarqui4@gmail.com";
 
         // Create a Session object to represent a mail session with the specified properties. 
         Session session = Session.getInstance(props,
@@ -120,6 +120,23 @@ public class MailSession {
         String msg = "";
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
+        String plant="";
+        if(tipo.equals("ingreso")){
+            plant= "        "
+                    + "<br/>Nombres del usuario.\n"
+                + "        <br/>\n"
+                + "        \n"
+                + "        <br/>Usted ingresó a su Banca Electrónica.\n"
+                + "        <br/> id del usuario: " + trans.getUserId()
+                + "        <br/> numero de cuenta: " + trans.getNumCuenta()
+                + "        <br/> tipo de transacción: " + trans.getTipo()
+                + "        <br/> fecha de la trans: " + dtf.format(now)
+                + "        <br/> monto de la transacción: " + trans.getMonto()
+                + "        \n";
+        }
+        
+                
+        
         msg = String.join(
                 System.getProperty("line.separator"),
                 "<div style=\"display: block;\n"
@@ -143,9 +160,10 @@ public class MailSession {
                 + "        <br/><br/>En caso de no haber realizado esta operación comuníquese inmediatamente al 02-2999-999 o para más informacion ingrese al sitio web en el siguiente link \n"
                 + "        <a href='https://www.google.com'>Banco BanQuito</a>\n"
                 + "        \n"
+                        +plant
                 + "        <br/>\n"
                 + "        <br/><b>Asesor Virtual</b>\n"
-                + "        <br/>Banco Pichincha\n"
+                + "        <br/>Banco BanQuito\n"
                 + "\n"
                 + "    </p>\n"
                 + "\n"
@@ -154,4 +172,6 @@ public class MailSession {
 
         return msg;
     }
+    
+    
 }

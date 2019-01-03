@@ -5,6 +5,8 @@
  */
 package ec.edu.espe.arquitectura.msg;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author User
@@ -15,6 +17,9 @@ public class ClienteRedRQ {
     private Integer codigo;
     private String correoElectronico;
     private String nombres;
+    private String identificacion;
+    
+    
 
     public String getApellidos() {
         return apellidos;
@@ -51,6 +56,20 @@ public class ClienteRedRQ {
 
     public ClienteRedRQ() {
     }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    @Override
+    public String toString() {
+        return "ClienteRedRQ{" + "apellidos=" + apellidos + ", codigo=" + codigo + ", correoElectronico=" + correoElectronico + ", nombres=" + nombres + ", identificacion=" + identificacion + '}';
+    }
+    
     
     
     
