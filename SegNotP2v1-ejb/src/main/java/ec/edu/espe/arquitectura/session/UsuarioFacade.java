@@ -78,26 +78,39 @@ public class UsuarioFacade {
     }
      
      
-     public List<Usuario> validarUsuariopoCred(String user, String pass){
+     public List<Usuario> validarUsuariopoCred(String user, String pass, String rol){
          
-        Morphia morphia = new Morphia();
-        morphia.mapPackage("ec.edu.espe.arquitectura.model");
-        Datastore ds = morphia.createDatastore(new MongoClient(), "proyArquiP2");
-        System.out.println("conexion establecida");
-        
-        List<Usuario> userF =new ArrayList<Usuario>();
-        userF=ds.createQuery(Usuario.class)
-                .field("nombreUsuario").equal(user)
-                .field("contrasenia").equal(pass)
-                .asList();
-        if(userF.isEmpty()){
-            System.out.println("no se encontro");
-            return null;
-        }
-        else{
-            System.out.println("se encontro");
-            return userF;
-        }
+         try {
+             Morphia morphia = new Morphia();
+             morphia.mapPackage("ec.edu.espe.arquitectura.model");
+             Datastore ds = morphia.createDatastore(new MongoClient(), "proyArquiP2");
+             System.out.println("conexion establecida");
+             
+             List<Usuario> userF = new ArrayList<Usuario>();
+             userF = ds.createQuery(Usuario.class)
+                     .field("nombreUsuario").equal(user)
+                     .field("contrasenia").equal(pass)
+                     .asList();
+             
+             if (userF.isEmpty()) {
+                 System.out.println("no se encontro");
+                 return null;
+             } else {
+                 System.out.println("se encontro");
+                 System.out.println(userF);
+                 System.out.println(userF.get(0).getRolesUsuarios().size());
+                 for (String codRol : userF.get(0).getRolesUsuarios()) {
+                     System.out.println(codRol);
+                     if (codRol.equals(rol)) {
+                         return userF;
+                     }
+                 }
+                 
+                 return null;
+             }
+         } catch (Exception e) {
+             return null;
+         }
      }
     
      

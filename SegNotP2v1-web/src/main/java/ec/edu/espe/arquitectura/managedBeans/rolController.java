@@ -56,8 +56,18 @@ public class rolController implements Serializable {
     public void setEJBRol(RolFacade EJBRol) {
         this.EJBRol = EJBRol;
     }
+
+    public List<Rol> getLroles() {
+        return lroles;
+    }
+
+    public void setLroles(List<Rol> lroles) {
+        this.lroles = lroles;
+    }
  
 
+    
+    
     public String getCodigoRol() {
         return codigoRol;
     }

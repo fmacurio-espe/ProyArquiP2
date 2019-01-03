@@ -37,7 +37,7 @@ public class Usuario{
     private Integer numUser;
     
     @Property("rolesUsuarios")    
-    private String[] rolesUsuarios;
+    private List<String> rolesUsuarios;
     
     //@Property("numusuario")    
     //private Integer numusuario;
@@ -114,21 +114,25 @@ public class Usuario{
         this.numUser = numUser;
     }
 
-    public String getRolesUsuarios() {
-        return Arrays.toString(rolesUsuarios);
+    public List<String> getRolesUsuarios() {
+        return rolesUsuarios;
     }
 
-    public void setRolesUsuarios(String[] rolesUsuarios) {
+    public void setRolesUsuarios(List<String> rolesUsuarios) {
         this.rolesUsuarios = rolesUsuarios;
     }
 
     
-    
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", codIdentificacion=" + codIdentificacion + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", codigoRol=" + codigoRol + '}';
+        return "Usuario{" + "id=" + id + ", codIdentificacion=" + codIdentificacion + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", numUser=" + numUser + ", rolesUsuarios=" + rolesUsuarios + ", codigoRol=" + codigoRol + '}';
     }
+
+    
+    
+
+    
 
    
     

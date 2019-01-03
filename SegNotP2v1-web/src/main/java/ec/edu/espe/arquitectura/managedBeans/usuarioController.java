@@ -119,7 +119,7 @@ public class usuarioController implements Serializable {
         objUsu.setNombreUsuario(nombreUsuario);
         objUsu.setContrasenia(contrasenia);
         objUsu.setNumUser(numUser);
-        objUsu.setRolesUsuarios(rolesUsuario);
+        //objUsu.setRolesUsuarios(rolesUsuario);
         
      
         System.out.println("los datos son" + objUsu);

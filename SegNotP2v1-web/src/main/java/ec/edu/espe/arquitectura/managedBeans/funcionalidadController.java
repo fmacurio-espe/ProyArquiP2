@@ -39,6 +39,8 @@ public class funcionalidadController implements Serializable {
     
     List<Funcionalidad> listFuncionTodo = new ArrayList<Funcionalidad>();
 
+    
+    
     public String getMsg() {
         return msg;
     }

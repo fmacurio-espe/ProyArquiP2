@@ -73,7 +73,8 @@ public class ValidarLoginResource {
     public Response postJson(usuarioRQ usuRQ) {
         System.out.println("ook");
         List<Usuario> userAux;
-        userAux=EJBUsuario.validarUsuariopoCred(usuRQ.getUsuario(), usuRQ.getClave());
+        System.out.println(usuRQ);
+        userAux=EJBUsuario.validarUsuariopoCred(usuRQ.getUsuario(), usuRQ.getClave(),usuRQ.getRol());
         if(!((userAux)==null)){
             usuRQ.setCi(userAux.get(0).getCodIdentificacion());
             return Response.accepted(usuRQ).build();
