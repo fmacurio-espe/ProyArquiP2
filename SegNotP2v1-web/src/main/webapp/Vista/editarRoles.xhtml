@@ -9,7 +9,7 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Registro Roles</title>
+                <title>Editar Rol</title>
             </f:facet>
         </h:head>
 
@@ -29,10 +29,10 @@
                    <p:menu>
                         <p:submenu label="Opciones">
                             <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
-                            <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
                             <p:menuitem value="Agregar Rol" outcome="RolesFuncionalidad.xhtml"/>
                             <p:menuitem value="Ver Roles" outcome="Roles.xhtml"/>
                             <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
+                            <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
 
                         </p:submenu>
 
@@ -41,7 +41,7 @@
 
                 <p:layoutUnit position="center">
                     <h:form>
-                        <h1>Registro de Funcionalidades A Rol</h1>
+                        <h1>Datos de Rol</h1>
                         
                         <h:panelGrid columns="2" cellpadding="6">
                             <p:outputLabel value="Código Rol:"/>
@@ -57,12 +57,7 @@
                         <br/>
                         <br/>
                         
-                        <h:selectManyCheckbox id="funcRoles" value="#{rolController.funcionesRoles}">
-                            <f:selectItem itemLabel="Funcionalidad 1" itemValue="Funcionalidad1" />
-                            <f:selectItem itemLabel="Funcionalidad 2" itemValue="Funcionalidad2" />
-                            <f:selectItems value="#{funcionalidadController.listFuncionTodo}" var="funcionalidad" itemLabel="#{funcionalidad.nombreFuncionalidad}" itemValue="#{funcionalidad.nombreFuncionalidad}" />
-                        </h:selectManyCheckbox>
-                    
+                        
                         <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{rolController.insertarRol()}" />
                         
                         

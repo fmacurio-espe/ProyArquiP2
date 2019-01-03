@@ -38,6 +38,9 @@ public class Rol {
     @Property("descripcionRol")
     private String descripcionRol;
 
+    @Property("funcionRoles")
+    private String[] funcionRoles;
+    
     //@Property("codigoFuncionalidad")
     //private List<String> codigoFuncionalidad;
     
@@ -68,6 +71,16 @@ public class Rol {
         this.descripcionRol = descripcionRol;
     }
 
+    public String[] getFuncionRoles() {
+        return funcionRoles;
+    }
+
+    public void setFuncionRoles(String[] funcionRoles) {
+        this.funcionRoles = funcionRoles;
+    }
+
+  
+    
     /*public List<String> getCodigoFuncionalidad() {
         return codigoFuncionalidad;
     }
@@ -75,16 +88,14 @@ public class Rol {
     public void setCodigoFuncionalidad(List<String> codigoFuncionalidad) {
         this.codigoFuncionalidad = codigoFuncionalidad;
     }*/
-    
+
     @Override
     public String toString() {
-        //return "rol{" + ", codigoRol=" + codigoRol + ", nombreRol=" + nombreRol + ", descripcionRol=" + descripcionRol + ", funcionalidad=" +  '}';
-        
-        
-        return "rol{" + ", codigoRol=" + codigoRol + ", nombreRol=" + nombreRol + ", descripcionRol=" + descripcionRol +'}';
-//        return "rol{" + ", codigoRol=" + codigoRol + ", nombreRol=" + nombreRol + ", descripcionRol=" + descripcionRol + ", funcionalidad=" + funcionalidades + '}';
+        return "Rol{" + "id=" + id + ", codigoRol=" + codigoRol + ", nombreRol=" + nombreRol + ", descripcionRol=" + descripcionRol + ", funcionRoles=" + funcionRoles + '}';
     }
-
+   
+    
+     
     @Override
     public int hashCode() {
         int hash = 7;

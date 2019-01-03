@@ -56,10 +56,6 @@
                                 <h:outputText value="#{users.codIdentificacion}" />
                             </p:column>
 
-                            <p:column headerText="Clave" style="width:30;">
-                                <h:outputText value="#{users.numUser}" />
-                            </p:column>
-                            
                             <p:column headerText="Nombre de Usuario" style="width:25;">
                                 <h:outputText value="#{users.nombreUsuario}" />
                             </p:column>
@@ -77,10 +73,6 @@
                                 <h:selectManyCheckbox id="selectCheck" valueChangeListener="#{usuarioController.checkUsuario}">
                                     <f:selectItem itemValue="#{users.numUser}" itemLabel="" />
                                 </h:selectManyCheckbox>
-                                    
-                            </p:column>
-                            <p:column style="width:35px;">
-                                
                             </p:column>
                         </p:dataTable>
                         

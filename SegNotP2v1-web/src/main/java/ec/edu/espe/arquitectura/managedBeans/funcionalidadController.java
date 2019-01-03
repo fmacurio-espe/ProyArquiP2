@@ -55,8 +55,6 @@ public class funcionalidadController implements Serializable {
         this.EJBFuncionalidad = EJBFuncionalidad;
     }
 
-    
-
     public String getCodigoFuncionalidad() {
         return codigoFuncionalidad;
     }
@@ -90,7 +88,6 @@ public class funcionalidadController implements Serializable {
     }
     
     
-
     public funcionalidadController() {
         
     }
@@ -102,9 +99,7 @@ public class funcionalidadController implements Serializable {
             System.out.println("error lista");
         }
     }
-    
-    
-    
+        
     
     public void insertarFuncionalidad(){
         
@@ -124,5 +119,14 @@ public class funcionalidadController implements Serializable {
         
         System.out.println(msg);
     }
+    
+    
+     public List<Funcionalidad> extraerFuncionalidades(){
+      //extraerRolesUsusarios();
+      List<Funcionalidad> lista;
+      lista = EJBFuncionalidad.listaFuncionalidadesTodas();
+      return lista;   
+    }
+    
     
 }
