@@ -9,7 +9,7 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>PrimeFaces</title>
+                <title>Funcionalidades</title>
             </f:facet>
         </h:head>
 
@@ -18,11 +18,11 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
+                    <h1> Seguridades - Banco BanQuito</h1>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <h4>Alexander Cajas - Fernando Acurio</h4>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="175" header="Menú" collapsible="true">
@@ -34,7 +34,6 @@
                             <p:menuitem value="Ver Roles" outcome="Roles.xhtml"/>
                             <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
                             
-
                         </p:submenu>
 
                     </p:menu>
@@ -42,8 +41,9 @@
 
                 <p:layoutUnit position="center">
                     <h:form id="formfun">
+                        <h1>Registro de Funcionalidades y Recursos</h1>
                         <h:panelGrid columns="2" cellpadding="2">
-                            <p:outputLabel value="Codigo de Funcionalidad: "/>
+                            <p:outputLabel value="Código: "/>
                             <p:inputText value="#{funcionalidadController.codigoFuncionalidad}" />
                             
                             <p:outputLabel value="Nombre: "/>
@@ -51,29 +51,34 @@
                             
                             <p:outputLabel value="Recurso:"/>
                             <p:inputText value="#{funcionalidadController.recurso}"/>
-                            
-                            <p:outputLabel value="Estado: "/>
-                            <p:outputLabel value="#{funcionalidadController.msg}"/>
                         </h:panelGrid>
+                        <br/>
+                            
+                        
                         <br/>
                         
                         
                         
                         <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{funcionalidadController.insertarFuncionalidad()}" update="formfun" />
-
+                        <br/>
+                        <br/>
+                        <p:outputLabel value="Estado: "/>
+                        <p:outputLabel value="#{funcionalidadController.msg}"/>
+                        <br/><br/>
+                        
                         <p:dataTable var="fun" value="#{funcionalidadController.listFuncionTodo}" sortMode="multiple">
                             <f:facet name="header">
                                 Funcionalidades
                             </f:facet>
-                            <p:column headerText="codigoFuncionalidad"  sortBy="#{fun.codigoFuncionalidad}">
+                            <p:column headerText="Código de Funcionalidad"  sortBy="#{fun.codigoFuncionalidad}">
                                 <h:outputText value="#{fun.codigoFuncionalidad}" />
                             </p:column>
 
-                            <p:column headerText="nombreFuncionalidad">
+                            <p:column headerText="Nombre Funcionalidad">
                                 <h:outputText value="#{fun.nombreFuncionalidad}" />
                             </p:column>
 
-                            <p:column headerText="recurso">
+                            <p:column headerText="Recurso">
                                 <h:outputText value="#{fun.recurso}" />
                             </p:column>
                         </p:dataTable>

@@ -44,7 +44,8 @@ public class usuarioController implements Serializable {
     //private Integer numusuario ;
     private Integer numUser;
     private String[] rolesUsuario = null;
-
+    private String msg="";
+    
     private List<Integer> checkUsuarios = new ArrayList<Integer>();
     
     
@@ -102,6 +103,14 @@ public class usuarioController implements Serializable {
 
     public void setRolesUsuario(String[] rolesUsuario) {
         this.rolesUsuario = rolesUsuario;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
    
