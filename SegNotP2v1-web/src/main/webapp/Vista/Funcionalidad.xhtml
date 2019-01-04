@@ -28,10 +28,11 @@
                 <p:layoutUnit position="west" size="175" header="Menú" collapsible="true">
                     <p:menu>
                         <p:submenu label="Opciones">
-                            <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
-                            <p:menuitem value="Rol" outcome="RolesFuncionalidad.xhtml"/>
-                            <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
+                             <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
                             <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
+                            <p:menuitem value="Agregar Rol" outcome="RolesFuncionalidad.xhtml"/>
+                            <p:menuitem value="Ver Roles" outcome="Roles.xhtml"/>
+                            <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
                             
 
                         </p:submenu>
@@ -41,18 +42,23 @@
 
                 <p:layoutUnit position="center">
                     <h:form id="formfun">
-                        <p:outputLabel value="Codigo de Funcionalidad: "/>
-                        <p:inputText value="#{funcionalidadController.codigoFuncionalidad}" />
+                        <h:panelGrid columns="2" cellpadding="2">
+                            <p:outputLabel value="Codigo de Funcionalidad: "/>
+                            <p:inputText value="#{funcionalidadController.codigoFuncionalidad}" />
+                            
+                            <p:outputLabel value="Nombre: "/>
+                            <p:inputText value="#{funcionalidadController.nombreFuncionalidad}"/>
+                            
+                            <p:outputLabel value="Recurso:"/>
+                            <p:inputText value="#{funcionalidadController.recurso}"/>
+                            
+                            <p:outputLabel value="Estado: "/>
+                            <p:outputLabel value="#{funcionalidadController.msg}"/>
+                        </h:panelGrid>
                         <br/>
-                        <p:outputLabel value="Nombre de Funcionalidad: "/>
-                        <p:inputText value="#{funcionalidadController.nombreFuncionalidad}"/>
-                        <br/>
-                        <p:outputLabel value="Recurso de la funcionalidad"/>
-                        <p:inputText value="#{funcionalidadController.recurso}"/>
-                        <br/>
-                        <p:outputLabel value="Estado: "/>
-                        <p:outputLabel value="#{funcionalidadController.msg}"/>
-                        <br/>
+                        
+                        
+                        
                         <p:commandButton id="aceptar" value="Aceptar"  icon="ui-icon-check" action="#{funcionalidadController.insertarFuncionalidad()}" update="formfun" />
 
                         <p:dataTable var="fun" value="#{funcionalidadController.listFuncionTodo}" sortMode="multiple">

@@ -54,8 +54,12 @@ public class FuncionalidadFacade {
         Datastore ds = morphia.createDatastore(new MongoClient(), "proyArquiP2");
         System.out.println("conexion establecida");
 
-        List<Funcionalidad> listaFunc = ds.createQuery(Funcionalidad.class).asList();
+        List<Funcionalidad> listaFunc = null;
+        listaFunc = ds.createQuery(Funcionalidad.class).asList();
         System.out.println(listaFunc);
         return listaFunc;
     }
+    
+    
+    
 }

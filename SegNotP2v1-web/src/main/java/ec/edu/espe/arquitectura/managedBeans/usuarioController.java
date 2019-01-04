@@ -43,7 +43,7 @@ public class usuarioController implements Serializable {
     private String contrasenia="";
     //private Integer numusuario ;
     private Integer numUser;
-    private String[] rolesUsuario;
+    private String[] rolesUsuario = null;
 
     private List<Integer> checkUsuarios = new ArrayList<Integer>();
     

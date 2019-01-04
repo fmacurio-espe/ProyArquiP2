@@ -37,9 +37,8 @@
                             <p:menuitem value="Agregar Usuario" outcome="RegistroUsuario.xhtml" />
                             <p:menuitem value="Ver Usuarios" outcome="Usuarios.xhtml"/>
                             <p:menuitem value="Agregar Rol" outcome="RolesFuncionalidad.xhtml"/>
+                            <p:menuitem value="Ver Roles" outcome="Roles.xhtml"/>
                             <p:menuitem value="Funcionalidad" outcome="Funcionalidad.xhtml"/>
-                            
-                            
 
                         </p:submenu>
 
@@ -47,24 +46,73 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <h:form>
+                    <h:form id="form">
                         <h1>Lista de Roles</h1>
                         
-                        <p:dataTable var="rol" value="#{rolController.extraerRolesUser()}">
-                            <p:column headerText="Código de Rol" style="width:25;">
-                                <h:outputText value="#{rol.codigoRol}" />
-                            </p:column>
+                        <p:growl showDetail="true" id="growl"></p:growl>
+                        
+                        <p:dataTable var="rol" value="#{rolController.extraerRolesUser()}" rowKey="#{rol.codigoRol}" 
+                                     editable="true" selectionMode="single" selection="#{rolController.selectRol}" id="tbl">
 
-                            <p:column headerText="Nombre de Rol" style="width:25;">
-                                <h:outputText value="#{rol.nombreRol}" />
-                            </p:column>
-
-                            <p:column headerText="Descripción" style="width:30;">
-                                <h:outputText value="#{rol.descripcionRol}" />
+                            <p:ajax event="rowEdit" listener="#{rolController.updateEdited}" update=":form:growl"/>
+                            
+                                
+                            <p:column style="width: 6%">
+                                <p:rowEditor/>
                             </p:column>
                             
-                            <p:column style="width:35px;">
-                                <p:rowEditor/>
+                            <!--p:column>    
+                                <f:facet name="output">    
+                                    <h:outputText value="" />    
+                                </f:facet>
+                            </p:column--> 
+                            
+                            <p:column>
+                                <f:facet name="header">    
+                                    <h:outputText value="Código de Rol" />    
+                                </f:facet>
+
+                                <p:cellEditor>
+                                    <f:facet name="output">    
+                                        <h:outputText value="#{rol.codigoRol}" />    
+                                    </f:facet>
+
+                                    <f:facet name="input">    
+                                        <h:inputText id="codigoInput" value="#{rol.codigoRol}" />    
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">    
+                                    <h:outputText value="Nombre Rol" />    
+                                </f:facet>
+
+                                <p:cellEditor>
+                                    <f:facet name="output">    
+                                        <h:outputText value="#{rol.nombreRol}" />    
+                                    </f:facet>
+
+                                    <f:facet name="input">    
+                                        <h:inputText id="nombreinput" value="#{rol.nombreRol}" />    
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">    
+                                    <h:outputText value="Descripción Rol" />    
+                                </f:facet>
+
+                                <p:cellEditor>
+                                    <f:facet name="output">    
+                                        <h:outputText value="#{rol.descripcionRol}" />    
+                                    </f:facet>
+
+                                    <f:facet name="input">    
+                                        <h:inputText id="descripcioninput" value="#{rol.descripcionRol}" />    
+                                    </f:facet>
+                                </p:cellEditor>
                             </p:column>
                         </p:dataTable>
                         

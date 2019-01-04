@@ -12,8 +12,11 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.ejb.EJB;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -32,7 +35,9 @@ public class rolController implements Serializable {
     private String codigoRol="";
     private String nombreRol="";
     private String descripcionRol="";
-    //private Integer numusuario ;
+    
+    private String[] funcionesRoles = null;
+    private String[] arregloRoles = null;
     
     //private Integer numUser;
     
@@ -42,6 +47,7 @@ public class rolController implements Serializable {
     
     }
     
+    private Rol selectRol;
     
     public RolFacade getEJBRol() {
         return EJBRol;
@@ -93,31 +99,68 @@ public class rolController implements Serializable {
     public void setListaDeRoles(List<Rol> listaDeRoles) {
         this.listaDeRoles = listaDeRoles;
     }
+
+    public String[] getFuncionesRoles() {
+        return funcionesRoles;
+    }
+
+    public void setFuncionesRoles(String[] funcionesRoles) {
+        this.funcionesRoles = funcionesRoles;
+    }
+
+    public String[] getArregloRoles() {
+        return arregloRoles;
+    }
+
+    public void setArregloRoles(String[] arregloRoles) {
+        this.arregloRoles = arregloRoles;
+    }
+
     
- 
     
+    /**/    
+
+    public Rol getSelectRol() {
+        return selectRol;
+    }
+
+    public void setSelectRol(Rol selectRol) {
+        this.selectRol = selectRol;
+    }
+   
+    public void updateEdited(RowEditEvent event){
+    
+        System.out.println("****************FUNCION A VERIFICAR****************");
+        System.out.println(event.getSource());
+        System.out.println("****************----------------****************");
+        
+        EJBRol.updateRol((Rol) event.getObject());        
+    }
+    
+
+    /**/
     public void insertarRol(){
         Rol objRol = new Rol();
         
         objRol.setCodigoRol(codigoRol);
         objRol.setNombreRol(nombreRol);
         objRol.setDescripcionRol(descripcionRol);
-     
+        objRol.setFuncionRoles(funcionesRoles);
+        
         System.out.println("los datos son" + objRol);
         EJBRol.insertarRol(objRol);
         
         System.out.println(codigoRol);
         System.out.println(nombreRol);
         System.out.println(descripcionRol);
+        System.out.println(Arrays.toString(funcionesRoles));
         System.out.println("Correctamento!");
         
         extraerRolesUsusarios();
     }
-
-    
      
-  public List<Rol> extraerRolesUser(){
-      extraerRolesUsusarios();
+    public List<Rol> extraerRolesUser(){
+    //  extraerRolesUsuarios();
       List<Rol> lista;
       lista = EJBRol.seleccionarRolesUsuario();
       return lista;   
@@ -128,6 +171,15 @@ public class rolController implements Serializable {
         listaDeRoles = EJBRol.seleccionarRolesUsuario();
     }
    
+     public List<Rol> editarRol(String codigo){
+      List<Rol> lista;
+      lista = EJBRol.buscarRolPorCodigo(codigo);
+         System.out.println("ROL ENCONTRADO"+lista);
+      return lista;   
+    }
+     
+     
+     
 //     public void eliminarUsuario(){
 //        List<Usuario> listaUsu = null;
 //        listaUsu = EJBRol.seleccionarUsuarios();
@@ -175,88 +227,3 @@ public class rolController implements Serializable {
      
      
 }
-//
-//=======
-//import ec.edu.espe.arquitectura.model.Funcionalidad;
-//import ec.edu.espe.arquitectura.session.FuncionalidadFacade;
-//import java.util.ArrayList;
-//import java.util.List;
-//import javax.annotation.PostConstruct;
-//import javax.ejb.EJB;
-//import javax.inject.Named;
-//import javax.enterprise.context.Dependent;
-//
-///**
-// *
-// * @author User
-// */
-//@Named(value = "rolController")
-//@Dependent
-//public class rolController {
-//
-//    @EJB
-//    FuncionalidadFacade EJBFun;
-//    /**
-//     * Creates a new instance of rolController
-//     */        
-//            
-//    String nombreRol;
-//    String Descripcion;
-//    List<Funcionalidad> lfun=new ArrayList<Funcionalidad>();
-//    List<Funcionalidad> Selfun=new ArrayList<Funcionalidad>();
-//    public rolController() {
-//        Funcionalidad a=new Funcionalidad();
-//        a.setCodigoFuncionalidad("a");
-//        a.setNombreFuncionalidad("b");
-//        a.setRecurso("s");
-//        lfun.add(a);
-//    }
-//    @PostConstruct
-//    public void rolController(){
-//        try {
-//            this.lfun = EJBFun.listaFuncionalidadesTodas();
-//        } catch (Exception e) {
-//            System.out.println("error lista");
-//        }
-//    }
-//    
-//
-//    public List<Funcionalidad> getSelfun() {
-//        return Selfun;
-//    }
-//
-//    public void setSelfun(List<Funcionalidad> Selfun) {
-//        this.Selfun = Selfun;
-//    }
-//
-//    
-//    public String getNombreRol() {
-//        return nombreRol;
-//    }
-//
-//    public void setNombreRol(String nombreRol) {
-//        this.nombreRol = nombreRol;
-//    }
-//
-//    public String getDescripcion() {
-//        return Descripcion;
-//    }
-//
-//    public void setDescripcion(String Descripcion) {
-//        this.Descripcion = Descripcion;
-//    }
-//
-//    public List<Funcionalidad> getLfun() {
-//        return lfun;
-//    }
-//
-//    public void setLfun(List<Funcionalidad> lfun) {
-//        this.lfun = lfun;
-//    }
-//
-//    
-//    
-//    
-//    
-//}
-//>>>>>>> origin/master
