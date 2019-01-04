@@ -56,13 +56,13 @@ public class MailSession {
     // The port you will connect to on the Amazon SES SMTP endpoint. 
     private int PORT = 587;
 
-    private String SUBJECT = "Amazon SES test (SMTP interface accessed using Java)";
+    private String SUBJECT = "Notificación sistema en línea - Banco BanQuito";
 
     private String BODY;
 
     Transaccion trans;
 
-    public void enviarMail(Transaccion mail) throws Exception {
+    public void enviarMail(Transaccion mail, String Nombres, String Correo) throws Exception {
         // Create a Properties object to contain connection configuration information.
         trans = mail;
         Properties props = new Properties();
@@ -71,7 +71,7 @@ public class MailSession {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        TO = "pruebaarqui4@gmail.com";
+        TO = Correo;
 
         // Create a Session object to represent a mail session with the specified properties. 
         Session session = Session.getInstance(props,
@@ -81,7 +81,7 @@ public class MailSession {
             }
         });
 
-        BODY = this.msgBody(trans.getTipo());
+        BODY = this.msgBody(trans.getTipo(),Nombres);
 
         // Create a message with the specified information. 
         MimeMessage msg = new MimeMessage(session);
@@ -116,27 +116,11 @@ public class MailSession {
         }
     }
 
-    public String msgBody(String tipo) {
+    public String msgBody(String tipo, String Nombres) {
         String msg = "";
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String plant="";
-        if(tipo.equals("ingreso")){
-            plant= "        "
-                    + "<br/>Nombres del usuario.\n"
-                + "        <br/>\n"
-                + "        \n"
-                + "        <br/>Usted ingresó a su Banca Electrónica.\n"
-                + "        <br/> id del usuario: " + trans.getUserId()
-                + "        <br/> numero de cuenta: " + trans.getNumCuenta()
-                + "        <br/> tipo de transacción: " + trans.getTipo()
-                + "        <br/> fecha de la trans: " + dtf.format(now)
-                + "        <br/> monto de la transacción: " + trans.getMonto()
-                + "        \n";
-        }
-        
-                
-        
         msg = String.join(
                 System.getProperty("line.separator"),
                 "<div style=\"display: block;\n"
@@ -147,7 +131,7 @@ public class MailSession {
                 + "</div>"
                 + "<div>"
                 + "        <b>Estimado/a.</b>\n"
-                + "        <br/>Nombres del usuario.\n"
+                + "        <br/>"+Nombres+".\n"
                 + "        <br/>\n"
                 + "        \n"
                 + "        <br/>Usted ingresó a su Banca Electrónica.\n"
@@ -160,7 +144,6 @@ public class MailSession {
                 + "        <br/><br/>En caso de no haber realizado esta operación comuníquese inmediatamente al 02-2999-999 o para más informacion ingrese al sitio web en el siguiente link \n"
                 + "        <a href='https://www.google.com'>Banco BanQuito</a>\n"
                 + "        \n"
-                        +plant
                 + "        <br/>\n"
                 + "        <br/><b>Asesor Virtual</b>\n"
                 + "        <br/>Banco BanQuito\n"
