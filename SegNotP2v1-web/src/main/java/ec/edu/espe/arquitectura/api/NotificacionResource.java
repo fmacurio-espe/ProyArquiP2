@@ -80,29 +80,37 @@ public class NotificacionResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response postJson(Transaccion content) throws Exception {
-        System.out.println(content);
-        //mail.enviarMail(content);
-        System.out.println("fun");
-        ClienteRedRQ n= obtenerUsuario();
-        System.out.println(n);
-        return Response.ok().build();
+    public Response postJson(Transaccion t) throws Exception {
+     try {
+            System.out.println(t);
+            System.out.println("fun");
+            ClienteRedRQ n = obtenerUsuario(t.getUserId());
+            System.out.println("fun2");
+            System.out.println(n);
+            mail.enviarMail(t,(n.getApellidos()+" "+n.getNombres()),n.getCorreoElectronico());
+            return Response.ok(n).build();
+        } catch (Exception e) {
+            return  Response.status(400).build();
+        }
     }
     
     
     
-    public ClienteRedRQ obtenerUsuario() throws MalformedURLException, IOException {
-        String sURL = "http://kyc.strangled.net:8080/KYC-mongo-rest-web/api/cliente/cedula/1234567890"; //just a string
+    public ClienteRedRQ obtenerUsuario(String id) throws MalformedURLException, IOException {
+        String sURL = "http://kyc.strangled.net:8080/KYC-mongo-rest-web/api/cliente/cedula/"+id; //just a string
 
         // Connect to the URL using java's native library
         URL url = new URL(sURL);
         URLConnection request = url.openConnection();
         request.connect();
+        System.out.println("fun3");
 
         // Convert to a JSON object to print data
         JsonParser jp = new JsonParser(); //from gson
         JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent())); //Convert the input stream to a json element
+        System.out.println(root);
         JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object. 
+        System.out.println(rootobj);
         String zipcode = rootobj.get("identificacion").getAsString(); //just grab the zipcode
         System.out.println(zipcode);
         System.out.println(root);
